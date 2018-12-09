@@ -20,13 +20,13 @@ namespace RadiusManager.Models
         }
 
         public virtual DbSet<Nas> Nas { get; set; }
-        public virtual DbSet<RadAcct> Radacct { get; set; }
-        public virtual DbSet<RadCheck> Radcheck { get; set; }
-        public virtual DbSet<RadGroupCheck> Radgroupcheck { get; set; }
-        public virtual DbSet<RadGroupReply> Radgroupreply { get; set; }
-        public virtual DbSet<RadPostAuth> Radpostauth { get; set; }
+        public virtual DbSet<RadAcct> RadAcct { get; set; }
+        public virtual DbSet<RadCheck> RadCheck { get; set; }
+        public virtual DbSet<RadGroupCheck> RadGroupCheck { get; set; }
+        public virtual DbSet<RadGroupReply> RadGroupReply { get; set; }
+        public virtual DbSet<RadPostAuth> RadPostAuth { get; set; }
         public virtual DbSet<RadReply> RadReply { get; set; }
-        public virtual DbSet<RadUserGroup> Radusergroup { get; set; }
+        public virtual DbSet<RadUserGroup> RadUserGroup { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

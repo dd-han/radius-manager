@@ -21,7 +21,7 @@ namespace RadiusManager.Controllers
         // GET: RadCheck
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Radcheck.ToListAsync());
+            return View(await _context.RadCheck.ToListAsync());
         }
 
         // GET: RadCheck/Details/5
@@ -32,7 +32,7 @@ namespace RadiusManager.Controllers
                 return NotFound();
             }
 
-            var radCheck = await _context.Radcheck
+            var radCheck = await _context.RadCheck
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (radCheck == null)
             {
@@ -72,7 +72,7 @@ namespace RadiusManager.Controllers
                 return NotFound();
             }
 
-            var radCheck = await _context.Radcheck.FindAsync(id);
+            var radCheck = await _context.RadCheck.FindAsync(id);
             if (radCheck == null)
             {
                 return NotFound();
@@ -123,7 +123,7 @@ namespace RadiusManager.Controllers
                 return NotFound();
             }
 
-            var radCheck = await _context.Radcheck
+            var radCheck = await _context.RadCheck
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (radCheck == null)
             {
@@ -138,15 +138,15 @@ namespace RadiusManager.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(uint id)
         {
-            var radCheck = await _context.Radcheck.FindAsync(id);
-            _context.Radcheck.Remove(radCheck);
+            var radCheck = await _context.RadCheck.FindAsync(id);
+            _context.RadCheck.Remove(radCheck);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool RadCheckExists(uint id)
         {
-            return _context.Radcheck.Any(e => e.Id == id);
+            return _context.RadCheck.Any(e => e.Id == id);
         }
     }
 }
