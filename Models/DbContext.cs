@@ -9,9 +9,11 @@ namespace RadiusManager.Models
         public DatabaseContext()
         {
         }
+        public DatabaseContext(DbContextOptions options) : base(options)
+        {
+        }
 
-        public DatabaseContext(DbContextOptions<DbContext> options)
-            : base(options)
+        public DatabaseContext(DbContextOptions<DbContext> options) : base(options)
         {
         }
 

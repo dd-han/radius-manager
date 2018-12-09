@@ -1,0 +1,79 @@
+@model RadiusManager.Models.RadCheck
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<h4>RadCheck</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Username" class="control-label"></label>
+                <input asp-for="Username" class="form-control" />
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Attribute" class="control-label"></label>
+                <select asp-for="Attribute" class="form-control">
+                    <option>Cleartext-Password</option>
+                    <option>Crypt-Password</option>
+                    <option>LM-Password</option>
+                    <option>MD5-Password</option>
+                    <option>NS-MTA-MD5-Password</option>
+                    <option>NT-Password</option>
+                    <option>SHA1-Password</option>
+                    <option>SHA2-Password</option>
+                    <option>SHA3-224-Password</option>
+                    <option>SHA3-256-Password</option>
+                    <option>SHA3-384-Password</option>
+                    <option>SHA3-512-Password</option>
+                    <option>SHA3-Password</option>
+                    <option>SHA-Password</option>
+                    <option>SMD5-Password</option>
+                    <option>SSHA2-224-Password</option>
+                    <option>SSHA2-256-Password</option>
+                    <option>SSHA2-384-Password</option>
+                    <option>SSHA2-512-Password</option>
+                </select>
+                <span asp-validation-for="Attribute" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Op" class="control-label"></label>
+                <select asp-for="Op" class="form-control">
+                    <option>=</option>
+                    <option>:=</option>
+                    <option>==</option>
+                    <option>+=</option>
+                    <option>!=</option>
+                    <option>&gt;</option>
+                    <option>&gt;=</option>
+                    <option>&lt;</option>
+                    <option>&lt;=</option>
+                    <option>=~</option>
+                    <option>!~</option>
+                    <option>=*</option>
+                    <option>!*</option>
+                </select>
+                <span asp-validation-for="Op" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Value" class="control-label"></label>
+                <input asp-for="Value" class="form-control" />
+                <span asp-validation-for="Value" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
