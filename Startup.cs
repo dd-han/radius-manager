@@ -94,6 +94,7 @@ namespace RadiusManager
                 options.Password.RequiredLength = GetIdentityConfig<int>("RequiredLength");
                 options.Password.RequiredUniqueChars = GetIdentityConfig<int>("RequiredUniqueChars");;
             })
+            .AddUserManager<RadiusUserManager>()
             .AddEntityFrameworkStores<DatabaseContext>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
