@@ -7,8 +7,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using RadiusManager.Models;
 
 namespace RadiusManager
 {
@@ -21,6 +23,50 @@ namespace RadiusManager
 
         public IConfiguration Configuration { get; }
 
+        #region Set up Database
+
+        private bool IsMySQL()
+        {
+            return "MySQL".Equals(Configuration.GetValue("DatabaseEngine", ""));
+        }
+
+        private bool IsSqlServer()
+        {
+            return "SqlServer".Equals(Configuration.GetValue("DatabaseEngine", ""));
+        }
+
+        private bool IsSqlite()
+        {
+            return "Sqlite".Equals(Configuration.GetValue("DatabaseEngine", ""));
+        }
+
+        private string ConnectionString()
+        {
+            return Configuration.GetConnectionString("DefaultConnection");
+        }
+
+        private void SetupDbContextOptions(DbContextOptionsBuilder options)
+        {
+            if (IsSqlite())
+            {
+                options.UseSqlite(ConnectionString());
+            }
+            else if (IsSqlServer())
+            {
+                options.UseSqlServer(ConnectionString());
+            }
+            else if (IsMySQL())
+            {
+                options.UseMySql(ConnectionString());
+            }
+            else
+            {
+                options.UseInMemoryDatabase(databaseName: "CargoCMS_DB");
+            }
+        }
+
+        #endregion
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -31,6 +77,7 @@ namespace RadiusManager
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddDbContext<DatabaseContext>(options => SetupDbContextOptions(options));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
