@@ -37,43 +37,43 @@ namespace RadiusManager.Models
 
                 entity.Property(e => e.Id)
                     .HasColumnName("id")
-                    .HasColumnType("int(10)");
+                    .HasMaxLength(10);
 
                 entity.Property(e => e.Community)
                     .HasColumnName("community")
-                    .HasColumnType("varchar(50)");
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.Description)
                     .HasColumnName("description")
-                    .HasColumnType("varchar(200)")
+                    .HasMaxLength(200)
                     .HasDefaultValueSql("'RADIUS Client'");
 
                 entity.Property(e => e.NasName)
                     .IsRequired()
                     .HasColumnName("nasname")
-                    .HasColumnType("varchar(128)");
+                    .HasMaxLength(128);
 
                 entity.Property(e => e.Ports)
                     .HasColumnName("ports")
-                    .HasColumnType("int(5)");
+                    .HasMaxLength(5);
 
                 entity.Property(e => e.Secret)
                     .IsRequired()
                     .HasColumnName("secret")
-                    .HasColumnType("varchar(60)")
+                    .HasMaxLength(50)
                     .HasDefaultValueSql("'secret'");
 
                 entity.Property(e => e.Server)
                     .HasColumnName("server")
-                    .HasColumnType("varchar(64)");
+                    .HasMaxLength(64);
 
                 entity.Property(e => e.ShortName)
                     .HasColumnName("shortname")
-                    .HasColumnType("varchar(32)");
+                    .HasMaxLength(32);
 
                 entity.Property(e => e.Type)
                     .HasColumnName("type")
-                    .HasColumnType("varchar(30)")
+                    .HasMaxLength(30)
                     .HasDefaultValueSql("'other'");
             });
 
@@ -111,28 +111,28 @@ namespace RadiusManager.Models
 
                 entity.Property(e => e.RadAcctId)
                     .HasColumnName("radacctid")
-                    .HasColumnType("bigint(21)");
+                    .HasMaxLength(21);
 
                 entity.Property(e => e.AcctAuthentic)
                     .HasColumnName("acctauthentic")
-                    .HasColumnType("varchar(32)");
+                    .HasMaxLength(32);
 
                 entity.Property(e => e.AcctInputOctets)
                     .HasColumnName("acctinputoctets")
-                    .HasColumnType("bigint(20)");
+                    .HasMaxLength(20);
 
                 entity.Property(e => e.AcctInterval)
                     .HasColumnName("acctinterval")
-                    .HasColumnType("int(12)");
+                    .HasMaxLength(12);
 
                 entity.Property(e => e.AcctOutputOctets)
                     .HasColumnName("acctoutputoctets")
-                    .HasColumnType("bigint(20)");
+                    .HasMaxLength(20);
 
                 entity.Property(e => e.AcctSessionId)
                     .IsRequired()
                     .HasColumnName("acctsessionid")
-                    .HasColumnType("varchar(64)")
+                    .HasMaxLength(64)
                     .HasDefaultValueSql("''");
 
                 entity.Property(e => e.AcctSessionTime).HasColumnName("acctsessiontime");
@@ -148,13 +148,13 @@ namespace RadiusManager.Models
                 entity.Property(e => e.AcctTerminateCause)
                     .IsRequired()
                     .HasColumnName("acctterminatecause")
-                    .HasColumnType("varchar(32)")
+                    .HasMaxLength(32)
                     .HasDefaultValueSql("''");
 
                 entity.Property(e => e.AcctUniqueId)
                     .IsRequired()
                     .HasColumnName("acctuniqueid")
-                    .HasColumnType("varchar(32)")
+                    .HasMaxLength(32)
                     .HasDefaultValueSql("''");
 
                 entity.Property(e => e.AcctUpdateTime)
@@ -164,66 +164,66 @@ namespace RadiusManager.Models
                 entity.Property(e => e.CalledStationId)
                     .IsRequired()
                     .HasColumnName("calledstationid")
-                    .HasColumnType("varchar(50)")
+                    .HasMaxLength(50)
                     .HasDefaultValueSql("''");
 
                 entity.Property(e => e.CallingStationId)
                     .IsRequired()
                     .HasColumnName("callingstationid")
-                    .HasColumnType("varchar(50)")
+                    .HasMaxLength(50)
                     .HasDefaultValueSql("''");
 
                 entity.Property(e => e.ConnectInfoStart)
                     .HasColumnName("connectinfo_start")
-                    .HasColumnType("varchar(50)");
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.ConnectInfoStop)
                     .HasColumnName("connectinfo_stop")
-                    .HasColumnType("varchar(50)");
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.FramedIpAddress)
                     .IsRequired()
                     .HasColumnName("framedipaddress")
-                    .HasColumnType("varchar(15)")
+                    .HasMaxLength(15)
                     .HasDefaultValueSql("''");
 
                 entity.Property(e => e.FramedProtocol)
                     .HasColumnName("framedprotocol")
-                    .HasColumnType("varchar(32)");
+                    .HasMaxLength(32);
 
                 entity.Property(e => e.GroupName)
                     .IsRequired()
                     .HasColumnName("groupname")
-                    .HasColumnType("varchar(64)")
+                    .HasMaxLength(64)
                     .HasDefaultValueSql("''");
 
                 entity.Property(e => e.NasIpAddress)
                     .IsRequired()
                     .HasColumnName("nasipaddress")
-                    .HasColumnType("varchar(15)")
+                    .HasMaxLength(15)
                     .HasDefaultValueSql("''");
 
                 entity.Property(e => e.NasPortId)
                     .HasColumnName("nasportid")
-                    .HasColumnType("varchar(15)");
+                    .HasMaxLength(15);
 
                 entity.Property(e => e.NasPortType)
                     .HasColumnName("nasporttype")
-                    .HasColumnType("varchar(32)");
+                    .HasMaxLength(32);
 
                 entity.Property(e => e.Realm)
                     .HasColumnName("realm")
-                    .HasColumnType("varchar(64)")
+                    .HasMaxLength(64)
                     .HasDefaultValueSql("''");
 
                 entity.Property(e => e.ServiceType)
                     .HasColumnName("servicetype")
-                    .HasColumnType("varchar(32)");
+                    .HasMaxLength(32);
 
                 entity.Property(e => e.Username)
                     .IsRequired()
                     .HasColumnName("username")
-                    .HasColumnType("varchar(64)")
+                    .HasMaxLength(64)
                     .HasDefaultValueSql("''");
             });
 
@@ -239,7 +239,7 @@ namespace RadiusManager.Models
                 entity.Property(e => e.Attribute)
                     .IsRequired()
                     .HasColumnName("attribute")
-                    .HasColumnType("varchar(64)")
+                    .HasMaxLength(64)
                     .HasDefaultValueSql("''");
 
                 entity.Property(e => e.Op)
@@ -251,13 +251,13 @@ namespace RadiusManager.Models
                 entity.Property(e => e.Username)
                     .IsRequired()
                     .HasColumnName("username")
-                    .HasColumnType("varchar(64)")
+                    .HasMaxLength(64)
                     .HasDefaultValueSql("''");
 
                 entity.Property(e => e.Value)
                     .IsRequired()
                     .HasColumnName("value")
-                    .HasColumnType("varchar(253)")
+                    .HasMaxLength(253)
                     .HasDefaultValueSql("''");
             });
 
@@ -273,13 +273,13 @@ namespace RadiusManager.Models
                 entity.Property(e => e.Attribute)
                     .IsRequired()
                     .HasColumnName("attribute")
-                    .HasColumnType("varchar(64)")
+                    .HasMaxLength(64)
                     .HasDefaultValueSql("''");
 
                 entity.Property(e => e.GroupName)
                     .IsRequired()
                     .HasColumnName("groupname")
-                    .HasColumnType("varchar(64)")
+                    .HasMaxLength(64)
                     .HasDefaultValueSql("''");
 
                 entity.Property(e => e.Op)
@@ -291,7 +291,7 @@ namespace RadiusManager.Models
                 entity.Property(e => e.Value)
                     .IsRequired()
                     .HasColumnName("value")
-                    .HasColumnType("varchar(253)")
+                    .HasMaxLength(253)
                     .HasDefaultValueSql("''");
             });
 
@@ -307,13 +307,13 @@ namespace RadiusManager.Models
                 entity.Property(e => e.Attribute)
                     .IsRequired()
                     .HasColumnName("attribute")
-                    .HasColumnType("varchar(64)")
+                    .HasMaxLength(64)
                     .HasDefaultValueSql("''");
 
                 entity.Property(e => e.GroupName)
                     .IsRequired()
                     .HasColumnName("groupname")
-                    .HasColumnType("varchar(64)")
+                    .HasMaxLength(64)
                     .HasDefaultValueSql("''");
 
                 entity.Property(e => e.Op)
@@ -325,7 +325,7 @@ namespace RadiusManager.Models
                 entity.Property(e => e.Value)
                     .IsRequired()
                     .HasColumnName("value")
-                    .HasColumnType("varchar(253)")
+                    .HasMaxLength(253)
                     .HasDefaultValueSql("''");
             });
 
@@ -335,36 +335,35 @@ namespace RadiusManager.Models
 
                 entity.Property(e => e.Id)
                     .HasColumnName("id")
-                    .HasColumnType("int(11)");
+                    .HasMaxLength(11);
 
                 entity.Property(e => e.AuthDate)
                     .HasColumnName("authdate")
                     .HasColumnType("timestamp")
-                    .HasDefaultValueSql("'CURRENT_TIMESTAMP'")
                     .ValueGeneratedOnAddOrUpdate();
 
                 entity.Property(e => e.Pass)
                     .IsRequired()
                     .HasColumnName("pass")
-                    .HasColumnType("varchar(64)")
+                    .HasMaxLength(64)
                     .HasDefaultValueSql("''");
 
                 entity.Property(e => e.Reply)
                     .IsRequired()
                     .HasColumnName("reply")
-                    .HasColumnType("varchar(32)")
+                    .HasMaxLength(32)
                     .HasDefaultValueSql("''");
 
                 entity.Property(e => e.Username)
                     .IsRequired()
                     .HasColumnName("username")
-                    .HasColumnType("varchar(64)")
+                    .HasMaxLength(64)
                     .HasDefaultValueSql("''");
             });
 
             modelBuilder.Entity<RadReply>(entity =>
             {
-                entity.ToTable("RadReply");
+                entity.ToTable("radreply");
 
                 entity.HasIndex(e => e.Username)
                     .HasName("username");
@@ -374,7 +373,7 @@ namespace RadiusManager.Models
                 entity.Property(e => e.Attribute)
                     .IsRequired()
                     .HasColumnName("attribute")
-                    .HasColumnType("varchar(64)")
+                    .HasMaxLength(64)
                     .HasDefaultValueSql("''");
 
                 entity.Property(e => e.Op)
@@ -386,13 +385,13 @@ namespace RadiusManager.Models
                 entity.Property(e => e.Username)
                     .IsRequired()
                     .HasColumnName("username")
-                    .HasColumnType("varchar(64)")
+                    .HasMaxLength(64)
                     .HasDefaultValueSql("''");
 
                 entity.Property(e => e.Value)
                     .IsRequired()
                     .HasColumnName("value")
-                    .HasColumnType("varchar(253)")
+                    .HasMaxLength(253)
                     .HasDefaultValueSql("''");
             });
 
@@ -407,12 +406,12 @@ namespace RadiusManager.Models
 
                 entity.Property(e => e.Username)
                     .HasColumnName("username")
-                    .HasColumnType("varchar(64)")
+                    .HasMaxLength(64)
                     .HasDefaultValueSql("''");
 
                 entity.Property(e => e.GroupName)
                     .HasColumnName("groupname")
-                    .HasColumnType("varchar(64)")
+                    .HasMaxLength(64)
                     .HasDefaultValueSql("''");
 
                 entity.Property(e => e.Priority)

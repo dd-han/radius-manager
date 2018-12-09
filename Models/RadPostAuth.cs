@@ -9,6 +9,6 @@ namespace RadiusManager.Models
         public string Username { get; set; }
         public string Pass { get; set; }
         public string Reply { get; set; }
-        public DateTime AuthDate { get; set; }
+        public DateTime AuthDate { get; set; } = DateTime.Now;
     }
 }
