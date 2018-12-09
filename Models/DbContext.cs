@@ -1,10 +1,12 @@
 ﻿using System;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace RadiusManager.Models
 {
-    public partial class DatabaseContext : DbContext
+    public partial class DatabaseContext : IdentityDbContext
     {
         public DatabaseContext()
         {
@@ -28,6 +30,48 @@ namespace RadiusManager.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<IdentityUser>(entity =>
+            {
+                entity.Property(e => e.Id)
+                    .HasMaxLength(36);
+                entity.Property(m => m.Email)
+                      .HasMaxLength(127);
+                entity.Property(m => m.NormalizedEmail)
+                      .HasMaxLength(127);
+                entity.Property(m => m.UserName)
+                      .HasMaxLength(127);
+                entity.Property(m => m.NormalizedUserName)
+                      .HasMaxLength(127);
+            });
+
+            modelBuilder.Entity<IdentityRole>(entity =>
+            {
+                entity.Property(e => e.Id)
+                    .HasMaxLength(36);
+                entity.Property(e => e.Name)
+                    .HasMaxLength(127);
+                entity.Property(e => e.NormalizedName)
+                    .HasMaxLength(127);
+            });
+
+            modelBuilder.Entity<IdentityUserLogin<string>>(entity =>
+            {
+                entity.Property(e => e.LoginProvider)
+                    .HasMaxLength(127);
+                entity.Property(e => e.ProviderKey)
+                    .HasMaxLength(127);
+            });
+
+            modelBuilder.Entity<IdentityUserToken<string>>(entity =>
+            {
+                entity.Property(e => e.LoginProvider)
+                    .HasMaxLength(127);
+                entity.Property(e => e.Name)
+                    .HasMaxLength(127);
+            });
+
             modelBuilder.Entity<Nas>(entity =>
             {
                 entity.ToTable("nas");

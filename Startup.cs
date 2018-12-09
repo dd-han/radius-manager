@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -78,6 +79,9 @@ namespace RadiusManager
             });
 
             services.AddDbContext<DatabaseContext>(options => SetupDbContextOptions(options));
+
+            services.AddDefaultIdentity<IdentityUser>()
+                    .AddEntityFrameworkStores<DatabaseContext>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
