@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RadiusManager.Models;
+using RadiusManager.Services;
 
 namespace RadiusManager
 {
@@ -68,6 +69,11 @@ namespace RadiusManager
 
         #endregion
 
+        private T GetIdentityConfig<T>(string key)
+        {
+            return Configuration.GetValue<T>($"Identity.{key}");
+        }
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -80,8 +86,15 @@ namespace RadiusManager
 
             services.AddDbContext<DatabaseContext>(options => SetupDbContextOptions(options));
 
-            services.AddDefaultIdentity<IdentityUser>()
-                    .AddEntityFrameworkStores<DatabaseContext>();
+            services.AddDefaultIdentity<IdentityUser>(options => {
+                options.Password.RequireDigit = GetIdentityConfig<bool>("RequireDigit");
+                options.Password.RequireLowercase = GetIdentityConfig<bool>("RequireLowercase");
+                options.Password.RequireNonAlphanumeric = GetIdentityConfig<bool>("RequireNonAlphanumeric");
+                options.Password.RequireUppercase = GetIdentityConfig<bool>("RequireUppercase");
+                options.Password.RequiredLength = GetIdentityConfig<int>("RequiredLength");
+                options.Password.RequiredUniqueChars = GetIdentityConfig<int>("RequiredUniqueChars");;
+            })
+            .AddEntityFrameworkStores<DatabaseContext>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
